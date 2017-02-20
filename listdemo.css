@@ -1,0 +1,83 @@
+.listdemo-panelhost
+{
+	display: inline-block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+
+	background-color: rgba(0,0,0,0);
+	background-position: left top;
+	background-image: url("../media/images/formdemo/formpage-wallpaper_2000x1000.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.listdemo-searchform
+{
+	display: inline-block;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	width: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	border-radius: .3rem;
+	border: 1px solid rgba(0,0,0,.2);
+	box-shadow: 0 0 .8rem 0 rgba(0,0,0,.3);
+	background-color: rgba(255,255,255,1);
+}
+.searchform-message
+{
+	display: inline-block;
+	position: relative;
+	width: 90%;
+	margin: 1rem 0 1rem 5%;
+
+	color: rgba(20,20,100,1);
+	font-family: "Nunito", helvetica;
+	font-size: 2vh;
+}
+.searchform-inputfield
+{
+	display: inline-block;
+	position: relative;
+	width: 90%;
+	margin: 0 0 1rem 5%;
+
+	color: rgba(20,20,100,1);
+	font-family: "Nunito", helvetica;
+	font-size: 2vh;
+}
+.searchform-results
+{
+	display: inline-block;
+	position: relative;
+	width: 90%;
+	margin: 0 0 1rem 5%;
+
+	color: rgba(20,20,100,1);
+	font-family: "Nunito", helvetica;
+	font-size: 2vh;
+}
+.result-item
+{
+	margin: .2rem;
+	padding: .2rem;
+	border: 1px solid rgba(0,0,0,.1);
+	border-radius: .2rem;
+	cursor: pointer;
+
+	color: rgba(40,40,40,1);
+	font-family: "Nunito", helvetica;
+}
+.result-item:hover
+{
+	color: rgba(255,255,255,1);
+	background-color: rgba(130,200,255,1);
+}
+.resultitem-label
+{
+	font-size: 2vh;
+}
+.resultitem-message
+{
+	font-size: 1.5vh;
+}
