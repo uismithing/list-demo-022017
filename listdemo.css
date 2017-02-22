@@ -29,7 +29,7 @@
 	display: inline-block;
 	position: relative;
 	width: 90%;
-	margin: 1rem 0 1rem 5%;
+	margin: .5vw 0 .5vw 5%;
 
 	color: rgba(20,20,100,1);
 	font-family: "Nunito", helvetica;
@@ -40,7 +40,7 @@
 	display: inline-block;
 	position: relative;
 	width: 90%;
-	margin: 0 0 1rem 5%;
+	margin: 0 0 .5vw 5%;
 
 	color: rgba(20,20,100,1);
 	font-family: "Nunito", helvetica;
@@ -51,7 +51,7 @@
 	display: inline-block;
 	position: relative;
 	width: 90%;
-	margin: 0 0 1rem 5%;
+	margin: 0 0 1vw 5%;
 
 	color: rgba(20,20,100,1);
 	font-family: "Nunito", helvetica;
@@ -110,19 +110,34 @@
 }
 @media screen and (min-width: 600px) and (max-width: 750px)
 {
+	.resultitem-label
+	{
+		font-size: 1vw;
+	}
 	.searchform-paginator
 	{
-		margin: 0 0 1vw 0;
+		margin: 0;
+	}
+	.searchform-searchresults
+	{
+		margin: 0 0 1vw 5%;
+	}
+	.searchform-message
+	{
+		margin: 1;
+		font-size: 1vw;
 	}
 	.pagination>li:first-child>a,
 	.pagination>li:first-child>span
 	{
 		padding: 0 1vw;
+		font-size: 1vw;
 	}
 	.pagination>li>a,
 	.pagination>li>span
 	{
 		padding: 0 1vw;
+		font-size: 1vw;
 	}
 	.pagination>.disabled>a,
 	.pagination>.disabled>a:focus,
@@ -132,6 +147,7 @@
 	.pagination>.disabled>span:hover
 	{
 		padding: 0 1vw;
+		font-size: 1vw;
 	}
 	.pagination>.active>a,
 	.pagination>.active>a:focus,
@@ -141,6 +157,7 @@
 	.pagination>.active>span:hover
 	{
 		padding: 0 1vw;
+		font-size: 1vw;
 	}
 }
 @media screen and (min-width: 350px) and (max-width: 420px)
@@ -155,6 +172,7 @@
 	}
 	.searchform-inputfield
 	{
+		margin: 0 0 2vw 5%;
 		font-size: 4vw;
 	}
 	.searchform-results

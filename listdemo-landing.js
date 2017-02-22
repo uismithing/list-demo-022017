@@ -77,7 +77,6 @@ class ListdemoLanding extends Component
 			},
 			"Pages":
 			{
-				"Size":6,
 				"Population":0,
 				"Selected":1
 			}
@@ -132,9 +131,12 @@ class ListdemoLanding extends Component
 			= true;
 		let profileReady
 			= true;
+		let screenWidth
+			= screen.width;
 		let pageSize
-			= _.has(this, "state.Pages.Size")
-			? this.state.Pages.Size
+			= (screenWidth > 600
+			&& screenWidth < 750)
+			? 4
 			: 6;
 		let totalPopulation
 			= _.has(this, "state.Pages.Population")
@@ -369,7 +371,8 @@ class ListdemoLanding extends Component
 			    return itemResult;
 			});
 		//
-		scopeProxy.setState(
+		//scopeProxy.setState(
+		updateState(scopeProxy,
 		{
 			"Pages":
 			{
