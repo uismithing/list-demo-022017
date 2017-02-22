@@ -33,7 +33,7 @@
 
 	color: rgba(20,20,100,1);
 	font-family: "Nunito", helvetica;
-	font-size: 2vh;
+	font-size: 1.5vw;
 }
 .searchform-inputfield
 {
@@ -44,7 +44,7 @@
 
 	color: rgba(20,20,100,1);
 	font-family: "Nunito", helvetica;
-	font-size: 2vh;
+	font-size: 1.5vw;
 }
 .searchform-results
 {
@@ -55,7 +55,13 @@
 
 	color: rgba(20,20,100,1);
 	font-family: "Nunito", helvetica;
-	font-size: 2vh;
+	font-size: 1.5vw;
+}
+.results-message
+{
+	color: rgba(20,20,100,1);
+	font-family: "Nunito", helvetica;
+	font-size: 1vw;
 }
 .result-item
 {
@@ -75,9 +81,128 @@
 }
 .resultitem-label
 {
-	font-size: 2vh;
+	font-size: 1.5vw;
 }
 .resultitem-message
 {
-	font-size: 1.5vh;
+	font-size: 1vw;
+}
+.searchform-paginator
+{
+	display: inline-block;
+	position: relative;
+	left: 50%;
+	margin: 0 0 .5vw 0;
+	transform: translateX(-50%);
+}
+.pagination
+{
+	margin: 0;
+}
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover
+{
+	background-color: rgba(100,190,250,1);
+}
+@media screen and (min-width: 600px) and (max-width: 750px)
+{
+	.searchform-paginator
+	{
+		margin: 0 0 1vw 0;
+	}
+	.pagination>li:first-child>a,
+	.pagination>li:first-child>span
+	{
+		padding: 0 1vw;
+	}
+	.pagination>li>a,
+	.pagination>li>span
+	{
+		padding: 0 1vw;
+	}
+	.pagination>.disabled>a,
+	.pagination>.disabled>a:focus,
+	.pagination>.disabled>a:hover,
+	.pagination>.disabled>span,
+	.pagination>.disabled>span:focus,
+	.pagination>.disabled>span:hover
+	{
+		padding: 0 1vw;
+	}
+	.pagination>.active>a,
+	.pagination>.active>a:focus,
+	.pagination>.active>a:hover,
+	.pagination>.active>span,
+	.pagination>.active>span:focus,
+	.pagination>.active>span:hover
+	{
+		padding: 0 1vw;
+	}
+}
+@media screen and (min-width: 350px) and (max-width: 420px)
+{
+	.searchform-paginator
+	{
+		margin: 0 0 2vw 0;
+	}
+	.searchform-message
+	{
+		font-size: 4vw;
+	}
+	.searchform-inputfield
+	{
+		font-size: 4vw;
+	}
+	.searchform-results
+	{
+		font-size: 4vw;
+	}
+	.resultitem-label
+	{
+		font-size: 4vw;
+	}
+	.resultitem-message
+	{
+		font-size: 3vw;
+	}
+	.results-message
+	{
+		font-size: 2vw;
+	}
+	.listdemo-searchform
+	{
+		width: 80%;
+	}
+	.pagination>li:first-child>a,
+	.pagination>li:first-child>span
+	{
+		padding: 0 1vw;
+	}
+	.pagination>li>a,
+	.pagination>li>span
+	{
+		padding: 0 1vw;
+	}
+	.pagination>.disabled>a,
+	.pagination>.disabled>a:focus,
+	.pagination>.disabled>a:hover,
+	.pagination>.disabled>span,
+	.pagination>.disabled>span:focus,
+	.pagination>.disabled>span:hover
+	{
+		padding: 0 1vw;
+	}
+	.pagination>.active>a,
+	.pagination>.active>a:focus,
+	.pagination>.active>a:hover,
+	.pagination>.active>span,
+	.pagination>.active>span:focus,
+	.pagination>.active>span:hover
+	{
+		padding: 0 1vw;
+	}
 }

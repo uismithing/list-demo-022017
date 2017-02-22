@@ -6,6 +6,7 @@ import {Link} from "react-router";
 import {Panel, Button} from "react-bootstrap";
 import {VelocityComponent, VelocityTransitionGroup, velocityHelpers} from "velocity-react";
 import {VelocityAnimate, VelocityUi} from "velocity-animate";
+import Pagination from "react-js-pagination";
 import $ from "jquery";
 //
 import {fetchListdemoPopulationJson} from "../actions/actions";
@@ -73,6 +74,12 @@ class ListdemoLanding extends Component
 				"Size":null,
 				"Indexes":null,
 				"Filtered":null
+			},
+			"Pages":
+			{
+				"Size":6,
+				"Population":0,
+				"Selected":1
 			}
 		});
 	}
@@ -125,6 +132,18 @@ class ListdemoLanding extends Component
 			= true;
 		let profileReady
 			= true;
+		let pageSize
+			= _.has(this, "state.Pages.Size")
+			? this.state.Pages.Size
+			: 6;
+		let totalPopulation
+			= _.has(this, "state.Pages.Population")
+			? this.state.Pages.Population
+			: 0;
+		let selectedPage
+			= _.has(this, "state.Pages.Selected")
+			? this.state.Pages.Selected
+			: 1;
 		let itemCount
 			= 0;
 		//
@@ -159,7 +178,11 @@ class ListdemoLanding extends Component
 					//
 					itemCount++;
 					//
-					return resultElement;
+					if((itemCount - 1) >= ((selectedPage - 1) * pageSize)
+					&& (itemCount - 1) < ((selectedPage - 1) * pageSize) + pageSize)
+					{
+						return resultElement;
+					}
 				});
 			//
 		}
@@ -168,6 +191,15 @@ class ListdemoLanding extends Component
 			var filteredList
 				= null;
 		}
+		let paginationProfile =
+			{
+				"activePage":selectedPage,
+				"itemsCountPerPage":pageSize,
+				"totalItemsCount":totalPopulation,
+				"pageRangeDisplayed":5,
+				"onChange":scopeProxy.paginatorChanged.bind(this)
+			}
+		//
 		if(jsonReady === true
 		&& profileReady === true)
 		{
@@ -181,7 +213,11 @@ class ListdemoLanding extends Component
 							<input id="searchform-input-field" type="text" placeholder="enter name of physician or organization" className="form-control" onChange={scopeProxy.filterList.bind(this)}/>
 						</div>
 						<div id="searchform-results-container" className="searchform-results">
+							<div id="results-message-container" className="results-message">{itemCount} results found</div>
 							<div>{filteredList}</div>
+						</div>
+						<div id="searchform-paginator-container" className="searchform-paginator">
+							<Pagination {...paginationProfile}/>
 						</div>
 					</div>
 				</div>
@@ -225,10 +261,23 @@ class ListdemoLanding extends Component
 		}
 		return matchCount;
 	}
+	paginatorChanged(event)
+	{
+		let scopeProxy
+			= this;
+		//
+		updateState(scopeProxy,
+		{
+			"Pages":
+			{
+				"Selected":event
+			}
+		});
+	}
 	itemClicked(providerParcel)
 	{
 		console.log("----- List item selected:", providerParcel);
-
+		//
 		//this.props.fetchProviderProfile(providerParcel);
 	}
 	establishSearchableList()
@@ -290,6 +339,8 @@ class ListdemoLanding extends Component
 			= this.state.Population.Searchable;
 		let targetValue
 			= event.target.value.toLowerCase();
+		let pageSize
+			= scopeProxy.state.Pages.Size;
 		let indexCollection
 			= [];
 		let itemCount
@@ -320,6 +371,10 @@ class ListdemoLanding extends Component
 		//
 		scopeProxy.setState(
 		{
+			"Pages":
+			{
+				"Population":indexCollection.length
+			},
 			"Population":
 			{
 				"Original":scopeProxy.props.listdemoPopulationJson,
