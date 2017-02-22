@@ -106,7 +106,7 @@
 .pagination>.active>span:focus,
 .pagination>.active>span:hover
 {
-	background-color: rgba(100,190,250,1);
+	background-color: rgba(130,200,255,1);
 }
 @media screen and (min-width: 600px) and (max-width: 750px)
 {
