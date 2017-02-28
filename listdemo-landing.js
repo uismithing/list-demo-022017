@@ -3,11 +3,9 @@ import ReactDOM from "react-dom";
 import {connect} from "react-redux";
 import {reduxForm} from "redux-form";
 import {Link} from "react-router";
-import {Panel, Button} from "react-bootstrap";
+import {Panel, Button, Pagination} from "react-bootstrap";
 import {VelocityComponent, VelocityTransitionGroup, velocityHelpers} from "velocity-react";
 import {VelocityAnimate, VelocityUi} from "velocity-animate";
-import Pagination from "react-js-pagination";
-import $ from "jquery";
 //
 import {fetchListdemoPopulationJson} from "../actions/actions";
 import {updateState} from "../toolbox/toolbox";
@@ -146,6 +144,8 @@ class ListdemoLanding extends Component
 			= _.has(this, "state.Pages.Selected")
 			? this.state.Pages.Selected
 			: 1;
+		let totalPages
+			= Math.ceil(totalPopulation / pageSize);
 		let itemCount
 			= 0;
 		//
@@ -196,10 +196,9 @@ class ListdemoLanding extends Component
 		let paginationProfile =
 			{
 				"activePage":selectedPage,
-				"itemsCountPerPage":pageSize,
-				"totalItemsCount":totalPopulation,
-				"pageRangeDisplayed":5,
-				"onChange":scopeProxy.paginatorChanged.bind(this)
+				"items":totalPages,
+				"maxButtons":5,
+				"onSelect":scopeProxy.paginatorChanged.bind(this)
 			}
 		//
 		if(jsonReady === true
@@ -219,7 +218,7 @@ class ListdemoLanding extends Component
 							<div>{filteredList}</div>
 						</div>
 						<div id="searchform-paginator-container" className="searchform-paginator">
-							<Pagination {...paginationProfile}/>
+							<Pagination prev next first last ellipsis boundaryLinks {...paginationProfile}/>
 						</div>
 					</div>
 				</div>
@@ -371,8 +370,7 @@ class ListdemoLanding extends Component
 			    return itemResult;
 			});
 		//
-		//scopeProxy.setState(
-		updateState(scopeProxy,
+		scopeProxy.setState(
 		{
 			"Pages":
 			{
